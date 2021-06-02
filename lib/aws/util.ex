@@ -4,14 +4,8 @@ defmodule AWS.Util do
   @doc """
   Create an HMAC-SHA256 for `key` and `message`.
   """
-  if System.otp_release() >= "22" do
-    def hmac_sha256(key, message) do
-      :crypto.mac(:hmac, :sha256, key, message)
-    end
-  else
-    def hmac_sha256(key, message) do
-      :crypto.hmac(:sha256, key, message)
-    end
+  def hmac_sha256(key, message) do
+    :crypto.mac(:hmac, :sha256, key, message)
   end
 
   @doc """
